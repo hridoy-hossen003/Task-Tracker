@@ -28,24 +28,26 @@
     <section class="flex justify-center items-center w-screen h-screen bg-slate-100">
         <div class="min-w-4/12 p-10 min-h-6/12 border rounded-lg bg-slate-200">
             
-               <form action="">
+               <form id="task-add-from" action="">
                  <div class="join w-full">
                     <div class="flex-1">
                         <label class="input validator w-full join-item">
-                            <input type="text" class="" placeholder="Start writing and press enter to create task" required />
+                            <input type="text" id="input-bar" class="" placeholder="Start writing and press enter to create task" required />
                         </label>
                  </div>
                     <button type="submit" class="btn btn-neutral join-item"><i class="fa-solid fa-person-arrow-down-to-line"></i></button>
                 </div>
                </form>
                 <div>
-                    <ul>
+                    <ul id="list_container" class="p-2 text-lg ">
 
                     </ul>
                 </div>
          
         </div>
     </section>
+
+    <script src="script.js "></script>
 </body>
 
 </html>
