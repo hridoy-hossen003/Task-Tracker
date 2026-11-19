@@ -29,10 +29,10 @@ from.addEventListener("submit", (event) => {
 const renderTasks = () => {
 
     listContainer.innerHTML = ""
-    const pending =  tasks.filter(task => task.completed === false)
-    const completed =  tasks.filter(task => task.completed === true)
+    const pending = tasks.filter(task => task.completed === false)
+    const completed = tasks.filter(task => task.completed === true)
     const sortedTasks = pending.concat(completed)
-    console.log(sortedTasks)
+    
     sortedTasks.forEach(task => {
         const li = document.createElement("li");
         li.dataset.id = task.id
@@ -62,15 +62,23 @@ const renderTasks = () => {
 
 
 listContainer.addEventListener("click", (event) => {
-    if (event.target.type !== "checkbox") return;  //it's check clicked element is chackbox or not..
+    // if (event.target.type !== "checkbox") return;  //it's check clicked element is chackbox or not..
 
     const item = event.target.closest("li")
+    const btn = event.target.closest("button")
+
+    if (!item) return
+
     const itemsId = Number(item.dataset.id)
-    const task = tasks.find(task => task.id === itemsId)
-    if (!task) return
 
-    task.completed = !task.completed;
-
+    if (event.target.type == "checkbox") {
+        const task = tasks.find(task => task.id === itemsId)
+        task.completed = !task.completed;
+    }
+    if (btn !== null) {
+        const afterDelete = tasks.filter(task => task.id !== itemsId)
+        tasks = afterDelete
+    }
 
     renderTasks()
 })
